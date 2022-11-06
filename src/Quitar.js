@@ -1,11 +1,11 @@
-const Quitar = ({ count, setCount }) => {
+const Quitar = ({ items, setItems }) => {
   return (
     <>
       <div className="mt-4">
         <button
           className="p-1 font-bold bg-white rounded-lg "
           onClick={() => {
-            setCount(count - 1);
+            setItems(items - 1);
           }}
         >
           Quitar

@@ -1,23 +1,46 @@
 import "./App.css";
 import Agregar from "./Agregar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Quitar from "./Quitar";
+
 function App() {
-  const [count, setCount] = useState(0);
+  const [items, setItems] = useState(0);
+
+  useEffect(() => {
+    if (
+      localStorage.getItem("items") === "undefined" ||
+      localStorage.getItem("items") === "null"
+    ) {
+      console.log("aqui stoy puto");
+      localStorage.setItem("items", JSON.stringify(0));
+    }
+  }, []);
+
+  useEffect(() => {
+    const items = JSON.parse(localStorage.getItem("items"));
+    if (items) {
+      setItems(items);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("items", JSON.stringify(items));
+  }, [items]);
+
   return (
     <h1 className="flex justify-center w-full h-screen bg-red-500">
       <div className="mt-20 bg-blue-600 w-96 h-96 rounded-xl">
         <div className="flex">
           <div className="flex justify-center w-1/2">
-            <Agregar count={count} setCount={setCount} />
+            <Agregar items={items} setItems={setItems} />
           </div>
           <div className="flex justify-center w-1/2">
-            <Quitar count={count} setCount={setCount} />
+            <Quitar items={items} setItems={setItems} />
           </div>
         </div>
         <div className="flex justify-center mt-4 ">
           <div className="flex justify-center w-40 font-bold bg-white rounded-full">
-            {count}
+            {items}
           </div>
         </div>
       </div>
