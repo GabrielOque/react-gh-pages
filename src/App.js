@@ -11,7 +11,6 @@ function App() {
       localStorage.getItem("items") === "undefined" ||
       localStorage.getItem("items") === "null"
     ) {
-      console.log("aqui stoy puto");
       localStorage.setItem("items", JSON.stringify(0));
     }
   }, []);
@@ -42,6 +41,9 @@ function App() {
           <div className="flex justify-center w-40 font-bold bg-white rounded-full">
             {items}
           </div>
+        </div>
+        <div className="flex justify-center mt-4 text-3xl font-bold text-white">
+          <h1>I'M Gabriel</h1>
         </div>
       </div>
     </h1>
