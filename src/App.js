@@ -101,7 +101,6 @@ function App() {
       "
               id="input"
               placeholder="Example label"
-              value={items + " " + "By Gabriel"}
             />
           </div>
         </div>
