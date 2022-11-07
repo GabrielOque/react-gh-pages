@@ -45,6 +45,32 @@ function App() {
         <div className="flex justify-center mt-4 text-3xl font-bold text-white">
           <h1>I'M Gabriel</h1>
         </div>
+        <div className="flex justify-center mt-8">
+          <div className="w-1/2">
+            <input
+              type="text"
+              className="
+        form-control
+        block
+        w-full
+        px-3
+        py-1.5
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+      "
+              id="exampleFormControlInput1"
+              placeholder="Example label"
+            />
+          </div>
+        </div>
       </div>
     </h1>
   );
