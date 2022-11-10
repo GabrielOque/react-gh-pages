@@ -76,7 +76,7 @@ function App() {
           </div>
         </div>
         <div className="flex justify-center mt-4 text-3xl font-bold text-white">
-          <h1>I'M Gabriel</h1>
+          <h1>I'M Gabriel Oquendo</h1>
         </div>
         <div className="flex justify-center mt-8">
           <div className="w-1/2">
