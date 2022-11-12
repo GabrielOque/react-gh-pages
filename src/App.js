@@ -56,7 +56,7 @@ function App() {
 
   return (
     <h1 className="flex justify-center w-full h-screen bg-red-500">
-      <div className="mt-20 bg-blue-600 w-96 h-96 rounded-xl">
+      <div className="h-auto mt-20 bg-blue-600 w-96 rounded-xl">
         <div className="flex justify-center mt-2">
           <div className="flex justify-center p-2 bg-red-700 rounded-full">
             <p id="reloj" className="font-bold text-white"></p>
@@ -103,6 +103,44 @@ function App() {
               placeholder="Example label"
             />
           </div>
+        </div>
+        <div className="grid grid-cols-2 m-4">
+          <div
+            className="p-2 m-2 text-center text-white bg-black"
+            onClick={() => {
+              document.getElementById("input").value = items;
+            }}
+          >
+            {items}
+          </div>
+          <div
+            className="p-2 m-2 text-center bg-white"
+            onClick={() => {
+              const elInput = document.querySelector("#input");
+              elInput.value = "Hola bebe";
+              setItems(0);
+            }}
+          >
+            {items}
+          </div>
+          <div className="p-2 m-2 text-center bg-orange-500">{items}</div>
+          <div className="p-2 m-2 text-center bg-lime-400">{items}</div>
+          <div className="p-2 m-2 text-center text-white bg-black">{items}</div>
+          <div className="p-2 m-2 text-center bg-white">{items}</div>
+          <div className="p-2 m-2 text-center bg-orange-500">{items}</div>
+          <div className="p-2 m-2 text-center bg-lime-400">{items}</div>
+          <div className="p-2 m-2 text-center text-white bg-black">{items}</div>
+          <div className="p-2 m-2 text-center bg-white">{items}</div>
+          <div className="p-2 m-2 text-center bg-orange-500">{items}</div>
+          <div className="p-2 m-2 text-center bg-lime-400">{items}</div>
+          <div className="p-2 m-2 text-center text-white bg-black">{items}</div>
+          <div className="p-2 m-2 text-center bg-white">{items}</div>
+          <div className="p-2 m-2 text-center bg-orange-500">{items}</div>
+          <div className="p-2 m-2 text-center bg-lime-400">{items}</div>
+          <div className="p-2 m-2 text-center text-white bg-black">{items}</div>
+          <div className="p-2 m-2 text-center bg-white">{items}</div>
+          <div className="p-2 m-2 text-center bg-orange-500">{items}</div>
+          <div className="p-2 m-2 text-center bg-lime-400">{items}</div>
         </div>
       </div>
     </h1>
