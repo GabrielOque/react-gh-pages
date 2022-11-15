@@ -1,39 +1,14 @@
 import "./App.css";
-import Agregar from "./Agregar";
-import { useState, useEffect } from "react";
-import Quitar from "./Quitar";
+import { useState } from "react";
+import avatar from "./Imagenes/avatar.png"; // with import
 
-//
-
-function muestraReloj() {
-  var fechaHora = new Date();
-  var horas = fechaHora.getHours();
-  var minutos = fechaHora.getMinutes();
-  var segundos = fechaHora.getSeconds();
-
-  if (horas < 10) {
-    horas = "0" + horas;
-  }
-  if (minutos < 10) {
-    minutos = "0" + minutos;
-  }
-  if (segundos < 10) {
-    segundos = "0" + segundos;
-  }
-
-  document.getElementById("reloj").innerHTML =
-    horas + ":" + minutos + ":" + segundos;
-}
-
-window.onload = function () {
-  setInterval(muestraReloj, 1000);
-};
-
-//
+//Componentes
+import Header from "./Header";
 
 function App() {
-  const [items, setItems] = useState(0);
-
+  const [isLogin, setIsLogin] = useState(true);
+  {
+    /*
   useEffect(() => {
     if (
       localStorage.getItem("items") === "undefined" ||
@@ -53,97 +28,52 @@ function App() {
   useEffect(() => {
     localStorage.setItem("items", JSON.stringify(items));
   }, [items]);
+*/
+  }
 
   return (
-    <h1 className="flex justify-center w-full h-screen bg-red-500">
-      <div className="h-auto mt-20 bg-blue-600 w-96 rounded-xl">
-        <div className="flex justify-center mt-2">
-          <div className="flex justify-center p-2 bg-red-700 rounded-full">
-            <p id="reloj" className="font-bold text-white"></p>
+    <>
+      {isLogin && (
+        <div className="h-screen bg-blue-300">
+          <div className="w-full text-center">
+            <p className="pt-8 text-4xl text-indigo-500">
+              <span className="font-bold">Task Manager</span> App
+            </p>
+          </div>
+          <div className="flex justify-center mt-8 ml-6 mr-6">
+            <img className="" src={avatar} alt={"Carlie Anglemire"} />
+          </div>
+          <div className="mt-4 text-center">
+            <p className="text-4xl font-bold text-indigo-700">Welcome</p>
+            <p className="mt-4">
+              En esta aplicación puesdes gestionar
+              <br /> tus notas y tareas, así como también <br /> llevar un
+              control total de tus notas <br />{" "}
+              <p className="font-bold">¡Animate!</p>
+            </p>
+          </div>
+          <div className="mt-6 text-center">
+            <button
+              className="w-40 pt-2 pb-2 pl-4 pr-4 text-xl font-bold text-white bg-indigo-300 cursor-pointer rounded-xl"
+              onClick={() => {
+                setIsLogin(!isLogin);
+              }}
+            >
+              LOGIN
+            </button>
+          </div>
+          <div className="flex justify-center w-full mt-6">
+            <div className="flex justify-between w-16">
+              <div className="w-2 h-2 bg-indigo-900 rounded-full"></div>
+              <div className="w-2 h-2 bg-indigo-500 rounded-full"></div>
+              <div className="w-2 h-2 bg-indigo-500 rounded-full"></div>
+              <div className="w-2 h-2 bg-indigo-500 rounded-full"></div>
+            </div>
           </div>
         </div>
-        <div className="flex">
-          <div className="flex justify-center w-1/2">
-            <Agregar items={items} setItems={setItems} />
-          </div>
-          <div className="flex justify-center w-1/2">
-            <Quitar items={items} setItems={setItems} />
-          </div>
-        </div>
-        <div className="flex justify-center mt-4 ">
-          <div className="flex justify-center w-40 font-bold bg-white rounded-full">
-            {items}
-          </div>
-        </div>
-        <div className="flex justify-center mt-4 text-3xl font-bold text-white">
-          <h1>I'M Gabriel Oquendo</h1>
-        </div>
-        <div className="flex justify-center mt-8">
-          <div className="w-1/2">
-            <input
-              type="text"
-              className="
-        form-control
-        block
-        w-full
-        px-3
-        py-1.5
-        text-base
-        font-normal
-        text-gray-700
-        bg-white bg-clip-padding
-        border border-solid border-gray-300
-        rounded
-        transition
-        ease-in-out
-        m-0
-        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
-      "
-              id="input"
-              placeholder="Example label"
-            />
-          </div>
-        </div>
-        <div className="grid grid-cols-2 m-4">
-          <div
-            className="p-2 m-2 text-center text-white bg-black"
-            onClick={() => {
-              document.getElementById("input").value = items;
-            }}
-          >
-            {items}
-          </div>
-          <div
-            className="p-2 m-2 text-center bg-white"
-            onClick={() => {
-              const elInput = document.querySelector("#input");
-              elInput.value = "Hola bebe";
-              setItems(0);
-            }}
-          >
-            {items}
-          </div>
-          <div className="p-2 m-2 text-center bg-orange-500">{items}</div>
-          <div className="p-2 m-2 text-center bg-lime-400">{items}</div>
-          <div className="p-2 m-2 text-center text-white bg-black">{items}</div>
-          <div className="p-2 m-2 text-center bg-white">{items}</div>
-          <div className="p-2 m-2 text-center bg-orange-500">{items}</div>
-          <div className="p-2 m-2 text-center bg-lime-400">{items}</div>
-          <div className="p-2 m-2 text-center text-white bg-black">{items}</div>
-          <div className="p-2 m-2 text-center bg-white">{items}</div>
-          <div className="p-2 m-2 text-center bg-orange-500">{items}</div>
-          <div className="p-2 m-2 text-center bg-lime-400">{items}</div>
-          <div className="p-2 m-2 text-center text-white bg-black">{items}</div>
-          <div className="p-2 m-2 text-center bg-white">{items}</div>
-          <div className="p-2 m-2 text-center bg-orange-500">{items}</div>
-          <div className="p-2 m-2 text-center bg-lime-400">{items}</div>
-          <div className="p-2 m-2 text-center text-white bg-black">{items}</div>
-          <div className="p-2 m-2 text-center bg-white">{items}</div>
-          <div className="p-2 m-2 text-center bg-orange-500">{items}</div>
-          <div className="p-2 m-2 text-center bg-lime-400">{items}</div>
-        </div>
-      </div>
-    </h1>
+      )}
+      {!isLogin && <Header isHeader={isLogin} setIsHeader={setIsLogin} />}
+    </>
   );
 }
 
