@@ -3,7 +3,7 @@ import { useState } from "react";
 import avatar from "./Imagenes/avatar.png"; // with import
 
 //Componentes
-import Header from "./Header";
+import ContainHome from "./ContaintHome";
 
 function App() {
   const [isLogin, setIsLogin] = useState(true);
@@ -72,7 +72,9 @@ function App() {
           </div>
         </div>
       )}
-      {!isLogin && <Header isHeader={isLogin} setIsHeader={setIsLogin} />}
+      {!isLogin && (
+        <ContainHome isContainHome={isLogin} setIsContainHome={setIsLogin} />
+      )}
     </>
   );
 }
