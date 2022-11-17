@@ -3,7 +3,7 @@ const Cards = ({ grupo }) => {
     <>
       <div
         className="w-40 m-1 bg-green-400 rounded-lg"
-        style={{ height: "200px" }}
+        style={{ height: "176px" }}
       >
         <p className="p-4 font-bold text-white">{grupo.nameGroup}</p>
         <p className="pl-4 text-sm text-white">{grupo.descriptionGroup}</p>
