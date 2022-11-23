@@ -1,12 +1,28 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import Cards from "./Cards";
 import Task from "./Task";
+import AddTask from "./AddTask";
+import FormTask from "./FormTask";
 
 const ContainHome = ({ isContainHome, setIsContainHome }) => {
-  const [task, setTask] = useState([]);
+  if (
+    localStorage.getItem("items") === undefined ||
+    localStorage.getItem("items") === null
+  ) {
+    localStorage.setItem("items", JSON.stringify([]));
+  }
+
+  const [task, setTask] = useState(JSON.parse(localStorage.getItem("items")));
+
   const [group, setGroup] = useState([]);
+  const [isComponentTask, setIsComponentTask] = useState(false);
+  const [isFormTask, setIsFormTask] = useState(false);
+
+  useEffect(() => {
+    localStorage.setItem("items", JSON.stringify(task));
+  }, [task]);
 
   const handleAddGroup = () => {
     const newGroup = {
@@ -17,15 +33,6 @@ const ContainHome = ({ isContainHome, setIsContainHome }) => {
       numFinishTask: 12,
     };
     setGroup([...group, newGroup]);
-  };
-
-  const handleAddtask = () => {
-    const newTask = {
-      id: Math.random(),
-      titleTask: Math.random(),
-      description: Math.random(),
-    };
-    setTask([...task, newTask]);
   };
 
   return (
@@ -60,12 +67,33 @@ const ContainHome = ({ isContainHome, setIsContainHome }) => {
               <Task t={t} />
             ))}
             <button
-              className="absolute flex items-center justify-center text-3xl font-bold text-white bg-blue-800 rounded-full w-14 h-14 right-4 bottom-16"
-              onClick={handleAddtask}
+              className="absolute z-50 flex items-center justify-center text-3xl font-bold text-white bg-blue-800 rounded-full w-14 h-14 right-4 bottom-16"
+              onClick={() => {
+                setIsComponentTask(!isComponentTask);
+              }}
             >
               +
             </button>
+            {isFormTask && (
+              <FormTask
+                isFormTask={isFormTask}
+                setIsFormTask={setIsFormTask}
+                task={task}
+                setTask={setTask}
+              />
+            )}
           </div>
+          {isComponentTask && (
+            <AddTask
+              task={task}
+              setTask={setTask}
+              isFormTask={isFormTask}
+              setIsFormTask={setIsFormTask}
+              isComponentTask={isComponentTask}
+              setIsComponentTask={setIsComponentTask}
+            />
+          )}
+
           <div>
             <Footer />
           </div>
