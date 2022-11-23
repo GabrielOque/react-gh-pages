@@ -33,9 +33,11 @@ const FormTask = ({ isFormTask, setIsFormTask, task, setTask }) => {
         ease-in-out
         m-0
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+        
       "
                 id="titulo"
                 placeholder="Name"
+                autocomplete="off"
               />
             </div>
           </div>
@@ -63,6 +65,7 @@ const FormTask = ({ isFormTask, setIsFormTask, task, setTask }) => {
       "
                 id="descripcion"
                 placeholder="Description"
+                autocomplete="off"
               />
             </div>
           </div>
